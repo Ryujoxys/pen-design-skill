@@ -1,0 +1,4 @@
+interface:
+  display_name: "Pen Design"
+  short_description: "Create and refine .pen designs with CLI or MCP"
+  default_prompt: "Use $pen-design to create or refine this .pen visual design."
