@@ -1,5 +1,7 @@
 # Pen Design Skill
 
+English | [简体中文](README.zh-CN.md)
+
 An agent skill for creating, editing, inspecting, validating, exporting, and
 implementing [pen.dev](https://pen.dev) `.pen` designs.
 
