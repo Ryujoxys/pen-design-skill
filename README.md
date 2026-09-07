@@ -18,16 +18,18 @@ design, accessibility, and implementation handoff.
 
 ## Compatibility
 
-Validated with the current npm release:
+Validated against the local CLI during maintenance:
 
 | Component | Version |
 | --- | --- |
-| `@pen.dev/cli` | `0.3.3` |
+| `@pen.dev/cli` | `0.3.6` |
 | Skill format | Agent Skills (`SKILL.md`) |
 
-The skill checks `pen version`, the npm registry version, CLI help, and the live
-Pencil schema at runtime. Those sources take priority if a newer pen.dev release
-changes the available commands or node APIs.
+The skill checks `pen version`, the npm registry version, CLI help, the bundled
+official skill, and the live Pencil schema at runtime. Those sources take
+priority if a newer pen.dev release changes commands or node APIs. See
+[Official integration](references/official-integration.md) for the routing and
+licensing boundary between the official docs and this repository's overlays.
 
 ## Install
 
@@ -59,7 +61,9 @@ Restart or reload your agent after installation so it discovers the skill.
 
 Invoke the skill as `$pen-design`, or ask the agent to create or edit a `.pen`
 design. The entrypoint is [`SKILL.md`](SKILL.md); detailed workflows are loaded
-from [`references/`](references/) only when relevant.
+from [`references/`](references/) only when relevant. Official CLI guides are
+read from the installed package at runtime rather than copied into this
+repository.
 
 Before editing a named design, the skill verifies the active document and uses
 the live schema as the source of truth. It never parses or hand-edits `.pen`

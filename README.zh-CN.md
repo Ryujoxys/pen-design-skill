@@ -18,10 +18,10 @@
 
 | 组件 | 版本 |
 | --- | --- |
-| `@pen.dev/cli` | `0.3.3` |
+| `@pen.dev/cli` | `0.3.6`（维护时验证；运行时以实际安装版本为准） |
 | Skill 格式 | Agent Skills（`SKILL.md`） |
 
-每次工作时，Skill 会检查 `pen version`、npm Registry 最新版本、CLI 帮助以及 Pencil 实时 Schema。如果后续 pen.dev 版本调整了命令或节点 API，应以这些实时信息为准。
+每次工作时，Skill 会检查 `pen version`、npm Registry 最新版本、CLI 帮助、官方 bundled skill 以及 Pencil 实时 Schema。如果后续 pen.dev 版本调整了命令或节点 API，应以这些实时信息为准。官方文档的读取和与本 Skill 的整合边界见 [官方整合说明](references/official-integration.md)。
 
 ## 安装
 
@@ -54,6 +54,8 @@ pen status
 可以直接调用 `$pen-design`，也可以让 Agent 创建或编辑 `.pen` 设计稿。
 [`SKILL.md`](SKILL.md) 是 Skill 的入口文件，具体工作流会按需从
 [`references/`](references/) 加载。
+
+官方 CLI 的详细 `pen-dev` 文档会在运行时从已安装的 `@pen.dev/cli` 读取，不复制进本仓库。
 
 编辑指定设计稿之前，Skill 会验证当前活动文档，并始终以实时 Schema 作为能力依据。它不会解析、搜索或手工修改 `.pen` 文件内容。
 
@@ -93,6 +95,7 @@ pen status
 - 设计质量、设计治理、状态和无障碍规范。
 - Web、移动端、管理后台、大屏、电商和演示文稿等平台模式。
 - 设计转代码、导出与研发交付流程。
+- 官方 `pen-dev` skill 的运行时读取、任务路由、模型和认证边界。
 
 ## 协议
 

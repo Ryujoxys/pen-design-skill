@@ -2,9 +2,10 @@
 
 ## Current surface
 
-The current baseline exposes `get_app_state`, `get_guidelines`, `execute`, and
-`browser`. The schema returned by `get_app_state` overrides this document when
-they differ.
+The current baseline exposes `get_app_state`, `execute`, and `browser`, with
+additional tools such as `get_style` or `read_skill` depending on the connected
+CLI/editor surface. Discover the available tools at runtime; the schema returned
+by `get_app_state` overrides this document when they differ.
 
 Always start with:
 

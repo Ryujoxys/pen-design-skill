@@ -15,6 +15,12 @@ If the bundled file is unavailable, use the official latest-published fallback:
 [pen.dev CLI Skill](https://unpkg.com/@pen.dev/cli@latest/SKILL.md). Do not
 replace this Skill from an unofficial repository.
 
+The bundled `dist/out/skills/pen-dev/` directory contains the official schema,
+`execute` reference, and task-specific guides. Use the routing table in
+[Official integration](official-integration.md) to read only the relevant
+guides. This repository adds overlays; it does not redistribute the official
+manuals.
+
 Upgrade with `npm install -g @pen.dev/cli`, then re-read the bundled Skill and
 help output. Do this once per session or after a mismatch, not before every call.
 
@@ -25,9 +31,11 @@ pen status
 pen login
 ```
 
-`PEN_CLI_KEY` can authenticate CI/CD. The selected agent may use its local login
-or `PEN_AGENT_API_KEY`; provider-specific environment variables may also apply.
-Never expose stored sessions or API keys.
+`PEN_CLI_KEY` can authenticate CI/CD. The selected agent may use its local login,
+`PEN_AGENT_API_KEY`, or a provider-specific variable such as
+`ANTHROPIC_API_KEY`. These credentials serve different layers: `PEN_CLI_KEY`
+authenticates pen.dev, while the agent credential authenticates the model
+provider. Never expose stored sessions or API keys.
 
 ## Generate
 
@@ -54,7 +62,9 @@ Useful current options:
 - `--enable-preview` and `--preview-output <path>` for previews
 - `--export-type png|jpeg|webp|pdf`
 
-Use `pen --list-models --agent codex` rather than hardcoding a model list.
+Use `pen --list-models --agent <name>` rather than hardcoding a model list. The
+list is CLI-version specific and may be a local catalog rather than a live
+provider `/models` response.
 
 ## Iterate
 

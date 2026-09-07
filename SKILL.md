@@ -30,8 +30,9 @@ for the live editor tools and `execute` API.
 
 ## Refresh and bind
 
-This revision is validated against `@pen.dev/cli` 0.3.3. Runtime schema and
-command help remain authoritative when using a newer release.
+This skill is maintained against the current `@pen.dev/cli` release. Runtime
+schema, bundled official skill, and command help remain authoritative when the
+installed version changes.
 
 Before the first Pen task in a session:
 
@@ -49,6 +50,10 @@ Before the first Pen task in a session:
 Read [Document safety](references/document-safety.md) before writing to a named
 file, editing outside the workspace, using concurrent agents, or resolving a
 `.pen` Git conflict.
+
+Read [Official integration](references/official-integration.md) at the start of
+the first Pen task in a session. It routes to the official schema and guides
+without duplicating their proprietary manuals in this repository.
 
 ## Source priority
 
@@ -79,6 +84,21 @@ Never simulate grouping by placing unrelated nodes next to each other.
 - Prefer `fill_container` and `fit_content` in layout-driven frames. Do not set
   `x`/`y` on auto-layout children unless `layoutPosition` is `absolute`.
 - Give every authored node a meaningful human-readable `name`.
+
+## Schema guardrails
+
+Apply the official `.pen` semantics rather than CSS assumptions:
+
+- Use only schema-supported properties. Percentages, `margin`, baseline/stretch
+  alignment, and CSS `calc()` values are invalid.
+- `layout` and `padding` belong on frames. Auto-layout ignores child `x`/`y`;
+  use `layoutPosition: "absolute"` only when deliberate.
+- Text needs an explicit `fill`. Use `textGrowth: "fixed-width"` for wrapping;
+  do not guess text box dimensions when layout can determine them.
+- New, copied, or modified root frames use `placeholder: true` while being
+  built, then clear it as soon as that frame is complete.
+- Set `viewBox` on every authored SVG path and prefer layout-driven charts over
+  manually positioned data marks.
 
 ## Working loop
 
@@ -132,6 +152,9 @@ Read [Design quality](references/design-quality.md) when creating or reviewing a
 screen. Read [States and accessibility](references/states-accessibility.md) for
 forms, flows, interactive components, or production handoff. Read
 [Design to code](references/design-to-code.md) only for implementation work.
+
+For specialized work, also read the matching official guide through the routing
+table in [Official integration](references/official-integration.md).
 
 ## Export and completion
 
