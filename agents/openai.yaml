@@ -1,4 +1,4 @@
 interface:
   display_name: "Pen Design"
-  short_description: "Create and refine .pen designs with CLI or MCP"
+  short_description: "Create .pen designs or research boards on the pen.dev canvas"
   default_prompt: "Use $pen-design to create or refine this .pen visual design."

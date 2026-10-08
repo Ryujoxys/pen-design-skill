@@ -12,6 +12,11 @@ It supports both major pen.dev workflows:
 - `pen interactive` or Pencil MCP for precise node edits, component reuse,
   hierarchy checks, screenshots, and targeted exports.
 
+It covers both deliverables the canvas supports: a product design, and a
+whiteboard where the deliverable is information for the user — research,
+comparison, evaluation, planning, and meeting prep laid out next to live
+`browser` nodes. Deciding between them happens before any drawing.
+
 The skill emphasizes real frame/group parent-child relationships, document
 safety, reusable components and variables, visual verification, responsive
 design, accessibility, and implementation handoff.
@@ -22,7 +27,8 @@ Validated against the local CLI during maintenance:
 
 | Component | Version |
 | --- | --- |
-| `@pen.dev/cli` | `0.3.6` |
+| `@pen.dev/cli` | `0.3.10` |
+| Pen desktop app | `1.2.15` |
 | Skill format | Agent Skills (`SKILL.md`) |
 
 The skill checks `pen version`, the npm registry version, CLI help, the bundled

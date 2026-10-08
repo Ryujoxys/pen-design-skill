@@ -28,6 +28,8 @@ the current task:
 | Task | Official reference |
 | --- | --- |
 | Any canvas work | `SKILL.md`, `pen-schema.md`, `execute.md` |
+| Research, comparison, evaluation, planning, meeting prep | `whiteboard.md` |
+| Images and vector artwork | `generate.md` |
 | Components and design systems | `guide/components.md`, `guide/design-system.md` |
 | Landing pages and web apps | `guide/landing-page.md`, `guide/web-app.md` |
 | Mobile screens | `guide/mobile-app.md` |
@@ -35,6 +37,12 @@ the current task:
 | Tables and dashboards | `guide/table.md` |
 | Code handoff | `guide/code.md`; add `guide/tailwind.md` for Tailwind v4 |
 | Scripts or shaders | `scripts-and-shaders.md` |
+
+Start from the deliverable. The official skill covers two different ones: a
+product design, and a whiteboard whose deliverable is information for the user.
+`whiteboard.md` is required whenever the user asks you to research, compare,
+evaluate, plan, prep, find, decide, summarize, shortlist, schedule, or budget
+something, and it is explicitly not a licence to design an app about the topic.
 
 For `pen interactive`, start with `read_skill()`, then read
 `pen-schema.md` and `execute.md` before editing. Pencil MCP exposes a different

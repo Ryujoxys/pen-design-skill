@@ -4,13 +4,30 @@ description: >
   Create, edit, inspect, validate, export, and implement .pen visual designs with
   the pen.dev CLI or Pencil MCP. Use for UI mockups, app and web screens,
   dashboards, design systems, responsive variants, design-to-code work, or any
-  task involving pen.dev, Pencil, Pen, or .pen files.
+  task involving pen.dev, Pencil, Pen, or .pen files. Also use when the canvas
+  should carry research rather than a design: competitor and vendor comparisons,
+  evaluation, planning, meeting prep, and briefs, built on live browser nodes.
 ---
 
 # Pen Design
 
 Use the current pen.dev runtime as the source of truth. The CLI and Pencil MCP
 share `.pen` files but serve different workflows.
+
+## Deliverable first
+
+Decide what the user is asking for before touching the canvas:
+
+- A **product design** — screen, page, deck, design system — is designed.
+- **Information** is whiteboarded. Signals: research, compare, evaluate, plan,
+  prep, find, decide, summarize, shortlist, schedule, budget, with no mention of
+  screens, apps, or websites. A request to evaluate vendors is not a request for
+  a procurement tool, and a request to plan a trip is not a request for a
+  travel app. Read [Official integration](references/official-integration.md)
+  and use live `browser` nodes instead of designing a product.
+
+When the deliverable is genuinely unclear, ask one question rather than guess
+the expensive option.
 
 ## Choose the surface
 
@@ -71,6 +88,11 @@ Read [Platform patterns](references/platform-patterns.md) only when the task is
 an admin product, mobile app, mini program, data display, commerce surface,
 design system, cross-platform family, or presentation deck.
 
+When the user supplies no brand or style direction, load a ready-made archetype
+with `get_style({ name: "..." })` instead of inventing a look. If the style takes
+params, the tool returns the options to choose from; call it again with all of
+them filled in.
+
 ## Required hierarchy
 
 Frames, groups, and their contents must have real parent-child relationships.
@@ -84,6 +106,12 @@ Never simulate grouping by placing unrelated nodes next to each other.
 - Prefer `fill_container` and `fit_content` in layout-driven frames. Do not set
   `x`/`y` on auto-layout children unless `layoutPosition` is `absolute`.
 - Give every authored node a meaningful human-readable `name`.
+- Only page/screen frames, reusable component frames, and other major container
+  frames belong directly under `document`. Never place text, icons, buttons,
+  cards, rows, images, or decorative shapes there.
+- Re-read instead of recreating. pen.dev is collaborative and the document can
+  change while you work, so a node that is missing or no longer matches what you
+  expected is usually someone else's edit, not a bug.
 
 ## Schema guardrails
 
@@ -99,6 +127,28 @@ Apply the official `.pen` semantics rather than CSS assumptions:
   built, then clear it as soon as that frame is complete.
 - Set `viewBox` on every authored SVG path and prefer layout-driven charts over
   manually positioned data marks.
+
+## Assets
+
+Images and artwork come from the runtime, never from hand-built paths:
+
+- There is no `image` node type. An image is applied as a `fill` on an existing
+  node, so insert the frame or rectangle first.
+- Never draw logos, illustrations, or mascots yourself. Hand-built drawings look
+  bad; when a design genuinely calls for one, use `Generate` with `type: "svg"`
+  on a frame. For iconography use `icon` nodes, for decoration use
+  frames/shapes/gradient fills, and for photography use image fills.
+- `Generate` is asynchronous. The call only does the bookkeeping; the image or
+  drawing lands after that `execute` call has returned, so an immediate
+  screenshot will not show it. Keep working and check with a cheap read in a
+  later call. Never re-issue `Generate` for pending work, never draw the result
+  by hand, and never add children to a frame you generated into.
+- Failures are silent, and they are the one case where calling `Generate` again
+  for the same result is correct.
+
+Read the official `generate.md` through
+[Official integration](references/official-integration.md) before calling
+`Generate`.
 
 ## Working loop
 
@@ -171,3 +221,7 @@ Before finishing:
 - The final target was screenshotted and visually inspected.
 - Requested exports were verified on disk and shown or linked to the user.
 - Report canvas edits separately from confirmed disk saves or exports.
+
+For a whiteboard deliverable the check is different: every source is a real page
+the user can open, each finding sits next to the source it came from, and the
+user's own decisions are handed back as open questions rather than made for them.
